@@ -1,0 +1,99 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+:root {
+  --textColor: orange;
+  --bgColorSections: rgba(0, 0, 0, 0.4);
+  --backgroundOpacity: 0.4;
+  --headingSize: 30px;
+  --gridSpace: 10px;
+}
+
+.Dashboard {
+  height: 100vh;
+  width: 100vw;
+  background-image: url("./images/milky-way.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+/* HEADER------------------------------- */
+header {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  padding: 10px;
+}
+.foobar {
+  color: white;
+}
+img {
+  display: block;
+  width: 50%;
+  height: 200px;
+}
+
+header h2 {
+  color: var(--textColor);
+  margin-left: auto;
+  margin-right: 0px;
+}
+/* --------------------------------------- */
+
+.container-infoSections {
+  height: 90%;
+  width: 100%;
+  display: grid;
+  padding: var(--gridSpace);
+  margin: auto;
+  grid-template-columns: 50% 25% 25%;
+  grid-template-rows: 50% 50%;
+  grid-template-areas:
+    "beer beer beer"
+    "bartenders serving queue";
+}
+
+.dashboard-section {
+  margin: var(--gridSpace);
+  background-color: var(--bgColorSections);
+}
+
+/* BEER------------------------------- */
+.beerKegs {
+  grid-area: beer;
+}
+/* ----------------------------------- */
+/* BARTENDERS------------------------------- */
+.Bartenders {
+  grid-area: bartenders;
+}
+/* ----------------------------------- */
+/* SERVING------------------------------- */
+.Serving {
+  grid-area: serving;
+}
+/* ----------------------------------- */
+/* QUEUE------------------------------- */
+.Queue {
+  grid-area: queue;
+}
+/* ----------------------------------- */
+
+/* EACH SECTION------------------------------- */
+
+.section-header {
+  font-size: var(--headingSize);
+  color: var(--textColor);
+}
+
+.bartenders-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.beers-container {
+  display: flex;
+  flex-direction: row;
+}
