@@ -6,7 +6,7 @@ export default function Queue() {
     <section className="Queue dashboard-section">
       <h2 className="section-header">Orders in queue</h2>
       <div className="queue-container">
-        <img src={alienSign} />
+        <img src={alienSign} alt="In Queue" />
       </div>
     </section>
   );

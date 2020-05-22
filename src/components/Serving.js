@@ -6,7 +6,7 @@ export default function Serving() {
     <section className="Serving dashboard-section">
       <h2 className="section-header">Currently serving</h2>
       <div className="serving-container">
-        <img src={alienHead} />
+        <img src={alienHead} alt="Alien Head" />
       </div>
     </section>
   );

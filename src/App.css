@@ -9,6 +9,7 @@
   --backgroundOpacity: 0.4;
   --headingSize: 30px;
   --gridSpace: 10px;
+  --borderRadiusSection: 50px;
 }
 
 .Dashboard {
@@ -58,6 +59,7 @@ header h2 {
 .dashboard-section {
   margin: var(--gridSpace);
   background-color: var(--bgColorSections);
+  border-radius: var(--borderRadiusSection);
 }
 
 /* BEER------------------------------- */
@@ -96,4 +98,8 @@ header h2 {
 .beers-container {
   display: flex;
   flex-direction: row;
+}
+
+.beerName {
+  color: white;
 }
