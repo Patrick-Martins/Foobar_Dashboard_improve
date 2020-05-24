@@ -13,10 +13,16 @@ export default function App() {
   //when i call setBeers it returns an array, with the beers
   //when I call set beers, whatever i put inside setBeers, is the value of {beers}
   const [beers, setBeers] = useState([]);
+  const [storage, setStorage] = useState([]);
 
   useEffect(() => {
-    //setCards is the callback function of the getCards
-    fetching.getData(setBeers);
+    //setBeers is the callback function of the getCards
+    fetching.getTaps(setBeers);
+  }, []);
+
+  useEffect(() => {
+    //setStorage is the callback function of the getCards
+    fetching.getBeersStorage(setStorage);
   }, []);
 
   // fetching.getData();
@@ -28,7 +34,7 @@ export default function App() {
         <h2>Wainting time 6 min...</h2>
       </header>
       <div className="container-infoSections">
-        <BeerKegs availableBeers={beers} />
+        <BeerKegs availableBeers={beers} onStorage={storage} />
         <Bartenders />
         <Serving />
         <Queue />

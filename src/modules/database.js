@@ -1,4 +1,4 @@
-export function getData(callback) {
+export function getTaps(callback) {
   fetch("https://foobar-squad.herokuapp.com/")
     .then((e) => e.json())
     .then((data) => {
@@ -6,7 +6,16 @@ export function getData(callback) {
       callback(data.taps);
     });
 }
+export function getBeersStorage(callback) {
+  fetch("https://foobar-squad.herokuapp.com/")
+    .then((e) => e.json())
+    .then((data) => {
+      console.log(data);
+      callback(data.storage);
+    });
+}
 
 export const fetching = {
-  getData,
+  getTaps,
+  getBeersStorage,
 };
