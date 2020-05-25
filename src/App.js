@@ -14,6 +14,9 @@ export default function App() {
   //when I call set beers, whatever i put inside setBeers, is the value of {beers}
   const [beers, setBeers] = useState([]);
   const [storage, setStorage] = useState([]);
+  //UPDATE BEERS AND STORAGE EVERY 5s
+  // setInterval(fetching.getTaps(setBeers), 5000);
+  // setInterval(fetching.getBeersStorage(setStorage), 5000);
 
   useEffect(() => {
     //setBeers is the callback function of the getCards

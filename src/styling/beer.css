@@ -1,0 +1,78 @@
+/* if svg has class percent50 it means that all siblings with id from percent0 to percent50 should not be shown */
+.percent10 #percent10 {
+  fill: none;
+}
+.percent20 #percent10,
+.percent20 #percent20 {
+  fill: none;
+}
+
+/* if percent is 30 it means that 30% was removed */
+.percent30 #percent10,
+.percent30 #percent20,
+.percent30 #percent30 {
+  fill: none;
+}
+.percent40 #percent10,
+.percent40 #percent20,
+.percent40 #percent30,
+.percent40 #percent40 {
+  fill: none;
+}
+.percent50 #percent10,
+.percent50 #percent20,
+.percent50 #percent30,
+.percent50 #percent40,
+.percent50 #percent50 {
+  fill: none;
+}
+.percent60 #percent10,
+.percent60 #percent20,
+.percent60 #percent30,
+.percent60 #percent40,
+.percent60 #percent50,
+.percent60 #percent60 {
+  fill: none;
+}
+.percent70 #percent10,
+.percent70 #percent20,
+.percent70 #percent30,
+.percent70 #percent40,
+.percent70 #percent50,
+.percent70 #percent60,
+.percent70 #percent70 {
+  fill: none;
+}
+.percent80 #percent10,
+.percent80 #percent20,
+.percent80 #percent30,
+.percent80 #percent40,
+.percent80 #percent50,
+.percent80 #percent60,
+.percent80 #percent70,
+.percent80 #percent80 {
+  fill: none;
+}
+.percent90 #percent10,
+.percent90 #percent20,
+.percent90 #percent30,
+.percent90 #percent40,
+.percent90 #percent50,
+.percent90 #percent60,
+.percent90 #percent70,
+.percent90 #percent80,
+.percent90 #percent90 {
+  fill: none;
+}
+.percent100 #percent10,
+.percent100 #percent20,
+.percent100 #percent30,
+.percent100 #percent40,
+.percent100 #percent50,
+.percent100 #percent60,
+.percent100 #percent70,
+.percent100 #percent80,
+.percent100 #percent90,
+.percent100 #percent100 {
+  fill: none;
+}
