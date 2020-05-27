@@ -14,19 +14,35 @@ export default function App() {
   //when I call set beers, whatever i put inside setBeers, is the value of {beers}
   const [beers, setBeers] = useState([]);
   const [storage, setStorage] = useState([]);
+  const [serving, setServing] = useState([]);
+  const [queue, setQueue] = useState([]);
   //UPDATE BEERS AND STORAGE EVERY 5s
-  // setInterval(fetching.getTaps(setBeers), 5000);
-  // setInterval(fetching.getBeersStorage(setStorage), 5000);
+  // setInterval(fetching.fetchBar(setBeers, setStorage, setServing, setQueue), 5000);
 
   useEffect(() => {
     //setBeers is the callback function of the getCards
-    fetching.getTaps(setBeers);
+    fetching.fetchBar(setBeers, setStorage, setServing, setQueue);
   }, []);
 
-  useEffect(() => {
-    //setStorage is the callback function of the getCards
-    fetching.getBeersStorage(setStorage);
-  }, []);
+  // useEffect(() => {
+  //   //setBeers is the callback function of the getCards
+  //   fetching.getTaps(setBeers);
+  // }, []);
+
+  // useEffect(() => {
+  //   //setStorage is the callback function of the getCards
+  //   fetching.getBeersStorage(setStorage);
+  // }, []);
+
+  // useEffect(() => {
+  //   //setStorage is the callback function of the getCards
+  //   fetching.getServing(setServing);
+  // }, []);
+
+  // useEffect(() => {
+  //   //setStorage is the callback function of the getCards
+  //   fetching.getQueue(setQueue);
+  // }, []);
 
   // fetching.getData();
   return (
@@ -39,8 +55,8 @@ export default function App() {
       <div className="container-infoSections">
         <BeerKegs availableBeers={beers} onStorage={storage} />
         <Bartenders />
-        <Serving />
-        <Queue />
+        <Serving serving={serving} />
+        <Queue queue={queue} />
       </div>
     </div>
   );

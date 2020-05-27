@@ -1,0 +1,75 @@
+/* SVG ALIEN  */
+.st0 {
+  fill: #e7e2de;
+}
+.st1 {
+  fill: #2a2f42;
+}
+.st2 {
+  fill: #e7e0da;
+}
+.st3 {
+  fill: #ccc0b0;
+}
+.st4 {
+  fill: #dad1c5;
+}
+.st5 {
+  fill: #b6aca3;
+}
+.st6 {
+  fill: #d5ccc5;
+}
+.st7 {
+  fill: #cac1ba;
+}
+.st8 {
+  fill: #7f7f7f;
+}
+.st9 {
+  fill: #f39200;
+}
+.st10 {
+  font-family: "MyriadPro-Regular";
+}
+.st11 {
+  font-size: 51.7628px;
+}
+
+/* -------------------------------------------- */
+
+.redAlien .st0 {
+  fill: red;
+}
+
+.redAlien .st3,
+.redAlien .st4,
+.redAlien .st5,
+.redAlien .st6,
+.redAlien .st7 {
+  fill: darkred;
+}
+
+.greenAlien .st0 {
+  fill: green;
+}
+
+.greenAlien .st3,
+.greenAlien .st4,
+.greenAlien .st5,
+.greenAlien .st6,
+.greenAlien .st7 {
+  fill: darkgreen;
+}
+
+.yellowAlien .st0 {
+  fill: yellow;
+}
+
+.yellowAlien .st3,
+.yellowAlien .st4,
+.yellowAlien .st5,
+.yellowAlien .st6,
+.yellowAlien .st7 {
+  fill: yellowgreen;
+}

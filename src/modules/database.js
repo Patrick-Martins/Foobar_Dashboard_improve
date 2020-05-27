@@ -1,3 +1,14 @@
+export function fetchBar(callbackBeers, callbackStorage, callbackServing, callbackQueue) {
+  fetch("https://foobar-squad.herokuapp.com/")
+    .then((e) => e.json())
+    .then((data) => {
+      //   console.log(data);
+      callbackBeers(data.taps);
+      callbackStorage(data.storage);
+      callbackServing(data.serving);
+      callbackQueue(data.queue);
+    });
+}
 export function getTaps(callback) {
   fetch("https://foobar-squad.herokuapp.com/")
     .then((e) => e.json())
@@ -15,6 +26,23 @@ export function getBeersStorage(callback) {
     });
 }
 
+export function getServing(callback) {
+  fetch("https://foobar-squad.herokuapp.com/")
+    .then((e) => e.json())
+    .then((data) => {
+      //   console.log(data);
+      callback(data.serving);
+    });
+}
+export function getQueue(callback) {
+  fetch("https://foobar-squad.herokuapp.com/")
+    .then((e) => e.json())
+    .then((data) => {
+      //   console.log(data);
+      callback(data.queue);
+    });
+}
+
 export async function beerSVG() {
   let response = await fetch("images/svgs/keg.svg");
   let mySVGData = await response.text();
@@ -23,7 +51,10 @@ export async function beerSVG() {
 }
 
 export const fetching = {
+  fetchBar,
   getTaps,
   getBeersStorage,
+  getServing,
+  getQueue,
   beerSVG,
 };

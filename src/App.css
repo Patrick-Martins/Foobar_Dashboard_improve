@@ -60,12 +60,33 @@ header h2 {
   margin: var(--gridSpace);
   background-color: var(--bgColorSections);
   border-radius: var(--borderRadiusSection);
+  /* overflow: hidden; */
+  /*
+  display: flex;
+  flex-direction: column; 
+  height: 100%; */
 }
 
 /* BEER------------------------------- */
 .beerKegs {
   grid-area: beer;
 }
+
+.keg-container {
+  width: 100%;
+  position: relative;
+}
+.keg-container svg {
+}
+
+.keg-container img {
+  position: absolute;
+  width: 50%;
+  height: 30%;
+  left: 25%;
+  top: 15%;
+}
+
 /* ----------------------------------- */
 /* BARTENDERS------------------------------- */
 .Bartenders {
@@ -76,6 +97,46 @@ header h2 {
 .Serving {
   grid-area: serving;
 }
+
+.alien-head {
+  width: 60%;
+  display: block;
+  margin: auto;
+}
+
+.servingOrders-container {
+  display: flex;
+  color: white;
+  width: 100%;
+  height: 40px;
+  align-items: center;
+}
+
+.serving-order {
+  display: flex;
+  position: relative;
+  align-items: center;
+  width: 33%;
+  height: 100%;
+
+  /* background-image: url("./images/svgs/planet.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain; */
+}
+
+.serving-order .serving-text {
+  display: block;
+  text-align: center;
+  margin: auto;
+  z-index: 10;
+}
+
+.planet {
+  position: absolute;
+  z-index: 5;
+}
+
 /* ----------------------------------- */
 /* QUEUE------------------------------- */
 .Queue {
@@ -100,13 +161,43 @@ header h2 {
   flex-direction: row;
 }
 
-.beer {
-  color: white;
-  margin: 10px;
-  width: 100%;
-}
 .beers-container {
   display: flex;
   width: 100%;
   font-size: 10px;
+}
+
+.beer {
+  color: white;
+  margin: 10px;
+  width: 100%;
+  position: relative;
+}
+
+.beerStorage {
+  display: flex;
+  align-items: center;
+  background-color: rgb(156, 156, 156);
+  width: 30%;
+  height: 20%;
+  border-radius: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.beerStorage h3 {
+  color: black;
+  width: 100%;
+  text-align: center;
+}
+
+/* ORDERS */
+#alien {
+  width: 60%;
+  display: block;
+  margin: auto;
+}
+
+#queueText {
 }

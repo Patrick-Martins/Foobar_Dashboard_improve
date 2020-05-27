@@ -3,5 +3,9 @@ import React, { useState } from "react";
 // import { fetching } from "./modules/database";
 
 export default function Storage({ storage }) {
-  return <h3 className="beerStorage">STORAGE: {storage}</h3>;
+  return (
+    <div className="beerStorage">
+      <h3> +{storage}</h3>
+    </div>
+  );
 }
