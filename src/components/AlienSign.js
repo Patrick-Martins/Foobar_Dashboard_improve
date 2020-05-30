@@ -8,11 +8,11 @@ import "../styling/orders.css";
 
 export default function AlienSign(props) {
   let alienClass;
-  if (props.queue === 1) {
+  if (props.queue < 5) {
     alienClass = "greenAlien";
-  } else if (props.queue === 2) {
+  } else if (props.queue >= 5 && props.queue <= 8) {
     alienClass = "yellowAlien";
-  } else if (props.queue >= 3) {
+  } else if (props.queue > 8) {
     alienClass = "redAlien";
   }
   return (

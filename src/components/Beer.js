@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Storage from "./Storage";
 import { fetching } from "../modules/database";
 import { ReactComponent as BeerKeg } from "../images/svgs/keg.svg";
@@ -29,9 +29,10 @@ export default function Beer(props) {
   //   const [beerLeft, setLevel] = useState([]);
 
   //   console.log(props.storage.amount);
-  //   console.log(Object.values(props.storage));
   let beerName = props.name;
   let imagePath = "";
+
+  //   console.log(Object.values(props.storage));
 
   //replace all spaces with empty
   beerName = beerName.replace(/ /g, "").toLowerCase();
@@ -53,13 +54,15 @@ export default function Beer(props) {
     imagePath = sleighride;
   } else if (beerName === "elhefe") {
     imagePath = elhefe;
-  } else if (beerName === "hollaback") {
+  } else if (beerName === "hollabacklager") {
     imagePath = hollaback;
   } else if (beerName === "mowintime") {
     imagePath = mowintime;
   }
 
   console.log("IMAGEPATH", imagePath);
+
+  const beerImage = <img src={imagePath} alt="image keg" className="beerImage" />;
 
   // console.log("LINK", imagesBeers);
 
@@ -100,7 +103,7 @@ export default function Beer(props) {
     <div className="beer">
       <div className="keg-container">
         <BeerKeg className={classLevel} />
-        <img src={imagePath} alt="image keg" className="beerImage" />
+        {beerImage}
       </div>
       <h3 className="beerName">{props.name}</h3>
       <h3 className="beerTap">LEVEL: {props.level}</h3>

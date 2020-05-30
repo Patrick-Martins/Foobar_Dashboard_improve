@@ -1,4 +1,4 @@
-export function fetchBar(callbackBeers, callbackStorage, callbackServing, callbackQueue) {
+export function fetchBar(callbackBeers, callbackStorage, callbackServing, callbackQueue, callbackBartenders) {
   fetch("https://foobar-squad.herokuapp.com/")
     .then((e) => e.json())
     .then((data) => {
@@ -7,8 +7,17 @@ export function fetchBar(callbackBeers, callbackStorage, callbackServing, callba
       callbackStorage(data.storage);
       callbackServing(data.serving);
       callbackQueue(data.queue);
+      callbackBartenders(data.bartenders);
     });
 }
+// export function fetchWholeBar(callbackBar) {
+//   fetch("https://foobar-squad.herokuapp.com/")
+//     .then((e) => e.json())
+//     .then((data) => {
+//       //   console.log(data);
+//       callbackBar(data);
+//     });
+// }
 export function getTaps(callback) {
   fetch("https://foobar-squad.herokuapp.com/")
     .then((e) => e.json())

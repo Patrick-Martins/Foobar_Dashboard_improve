@@ -60,6 +60,7 @@ header h2 {
   margin: var(--gridSpace);
   background-color: var(--bgColorSections);
   border-radius: var(--borderRadiusSection);
+  height: 100%;
   /* overflow: hidden; */
   /*
   display: flex;
@@ -81,9 +82,9 @@ header h2 {
 
 .keg-container img {
   position: absolute;
-  width: 50%;
-  height: 30%;
-  left: 25%;
+  width: 30%;
+  height: auto;
+  left: 35%;
   top: 15%;
 }
 
@@ -96,16 +97,19 @@ header h2 {
 /* SERVING------------------------------- */
 .Serving {
   grid-area: serving;
+  position: relative;
 }
 
 .alien-head {
-  width: 60%;
+  width: 40%;
   display: block;
   margin: auto;
 }
 
 .servingOrders-container {
   display: flex;
+  position: absolute;
+  bottom: 25px;
   color: white;
   width: 100%;
   height: 40px;
@@ -152,8 +156,19 @@ header h2 {
 }
 
 .bartenders-container {
+  width: 100%;
   display: flex;
   flex-direction: row;
+  color: white;
+  margin: auto;
+}
+
+.bartenders-container div {
+  width: 100%;
+}
+
+.bartenders-container svg {
+  width: 100%;
 }
 
 .beers-container {
@@ -177,17 +192,18 @@ header h2 {
 .beerStorage {
   display: flex;
   align-items: center;
-  background-color: rgb(156, 156, 156);
+  /* background-color: rgb(156, 156, 156); */
+
   width: 30%;
   height: 20%;
   border-radius: 100%;
   position: absolute;
   top: 0;
-  right: 0;
+  right: -20px;
 }
 
 .beerStorage h3 {
-  color: black;
+  color: white;
   width: 100%;
   text-align: center;
 }
@@ -200,4 +216,126 @@ header h2 {
 }
 
 #queueText {
+}
+
+svg {
+  display: block;
+  position: relative;
+}
+svg#astronaut g#astronaut-right-palm,
+svg#astronaut g#astronaut-left-palm {
+  transition: all 3s;
+}
+svg#astronaut g#astronaut-left-palm #money,
+svg#astronaut g#astronaut-left-palm #sign,
+svg#astronaut g#astronaut-right-palm #payment,
+svg#astronaut g#astronaut-right-palm #beer {
+  transition: all 1s;
+}
+
+/* RIGHT PALM -------------------*/
+svg#astronaut g#astronaut-right-palm {
+  transform-origin: 18% 53%;
+}
+
+svg#astronaut g#astronaut-left-palm {
+  transform-origin: 55% 55%;
+}
+
+/* rotate palm of arm to 0 depending on state*/
+svg#astronaut.startServing g#astronaut-left-palm,
+svg#astronaut.reserveTap g#astronaut-left-palm,
+svg#astronaut.pourBeer g#astronaut-left-palm,
+svg#astronaut.releaseTap g#astronaut-left-palm,
+svg#astronaut.startPayment g#astronaut-left-palm {
+  transform: rotate(0deg);
+}
+svg#astronaut.receivePayment g#astronaut-right-palm,
+svg#astronaut.waiting g#astronaut-right-palm {
+  transform: rotate(0deg);
+}
+
+/* Beer Serving*/
+/* rotate palm of rightarm */
+svg#astronaut.startServing g#astronaut-right-palm,
+svg#astronaut.reserveTap g#astronaut-right-palm,
+svg#astronaut.pourBeer g#astronaut-right-palm,
+svg#astronaut.releaseTap g#astronaut-right-palm {
+  transform: rotate(160deg);
+  animation: drinkBeer 1s infinite alternate-reverse;
+}
+
+/* Payment Serving*/
+
+svg#astronaut g#astronaut-right-palm {
+  /* transform: rotate(160deg); */
+}
+/* LEFT PALM -------------------*/
+/* Waiting Serving*/
+svg#astronaut.waiting g#astronaut-left-palm {
+  transform: rotate(-180deg);
+  animation: showWaiting 0.5s infinite alternate;
+}
+/* Receive Money Serving*/
+svg#astronaut.receivePayment g#astronaut-left-palm {
+  transform: rotate(-150deg);
+  animation: showReceivePayment 1s infinite alternate;
+}
+
+svg#astronaut.startServing g#astronaut-left-palm #sign,
+svg#astronaut.startServing g#astronaut-left-palm #money,
+svg#astronaut.startServing g#astronaut-right-palm #payment,
+svg#astronaut.reserveTap g#astronaut-left-palm #sign,
+svg#astronaut.reserveTap g#astronaut-left-palm #money,
+svg#astronaut.reserveTap g#astronaut-right-palm #payment,
+svg#astronaut.pourBeer g#astronaut-left-palm #sign,
+svg#astronaut.pourBeer g#astronaut-left-palm #money,
+svg#astronaut.pourBeer g#astronaut-right-palm #payment,
+svg#astronaut.releaseTap g#astronaut-left-palm #sign,
+svg#astronaut.releaseTap g#astronaut-left-palm #money,
+svg#astronaut.releaseTap g#astronaut-right-palm #payment,
+svg#astronaut.waiting g#astronaut-left-palm #money,
+svg#astronaut.waiting g#astronaut-right-palm #payment,
+svg#astronaut.waiting g#astronaut-right-palm #beer,
+svg#astronaut.receivePayment g#astronaut-right-palm #beer,
+svg#astronaut.receivePayment g#astronaut-right-palm #payment,
+svg#astronaut.receivePayment g#astronaut-left-palm #sign {
+  /* transform-origin: 90% 55%; */
+  opacity: 0;
+  /* display: none; */
+  /* transform: rotate(20deg); */
+}
+/* svg#astronaut.releaseTap g#astronaut-left-palm */
+
+svg#astronaut.waiting g#astronaut-left-palm {
+  /* transform-origin: 90% 55%; */
+  transform: rotate(-90deg);
+
+  /* transform: translateX(100px); */
+}
+
+svg#astronaut.waiting g#astronaut-right-palm #beer {
+}
+
+svg#astronaut.receivePayment g#astronaut-left-palm {
+  /* transform-origin: 90% 55%; */
+  /* transform: rotate(90deg); */
+}
+
+/* ANIMATION */
+
+@keyframes drinkBeer {
+  to {
+    transform: rotate(180deg);
+  }
+}
+@keyframes showWaiting {
+  to {
+    transform: rotate(-100deg);
+  }
+}
+@keyframes showReceivePayment {
+  to {
+    transform: rotate(-100deg);
+  }
 }
