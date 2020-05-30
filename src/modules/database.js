@@ -10,14 +10,6 @@ export function fetchBar(callbackBeers, callbackStorage, callbackServing, callba
       callbackBartenders(data.bartenders);
     });
 }
-// export function fetchWholeBar(callbackBar) {
-//   fetch("https://foobar-squad.herokuapp.com/")
-//     .then((e) => e.json())
-//     .then((data) => {
-//       //   console.log(data);
-//       callbackBar(data);
-//     });
-// }
 export function getTaps(callback) {
   fetch("https://foobar-squad.herokuapp.com/")
     .then((e) => e.json())

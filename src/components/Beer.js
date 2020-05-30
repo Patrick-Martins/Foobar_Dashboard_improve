@@ -36,7 +36,7 @@ export default function Beer(props) {
 
   //replace all spaces with empty
   beerName = beerName.replace(/ /g, "").toLowerCase();
-  console.log(`${beerName}`);
+  // console.log(`${beerName}`);
 
   if (beerName === "githop") {
     imagePath = githop;
@@ -60,7 +60,7 @@ export default function Beer(props) {
     imagePath = mowintime;
   }
 
-  console.log("IMAGEPATH", imagePath);
+  // console.log("IMAGEPATH", imagePath);
 
   const beerImage = <img src={imagePath} alt="image keg" className="beerImage" />;
 
@@ -106,7 +106,7 @@ export default function Beer(props) {
         {beerImage}
       </div>
       <h3 className="beerName">{props.name}</h3>
-      <h3 className="beerTap">LEVEL: {props.level}</h3>
+      {/* <h3 className="beerTap">LEVEL: {props.level}</h3> */}
       {storageBeer}
     </div>
   );

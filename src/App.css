@@ -7,7 +7,7 @@
   --textColor: orange;
   --bgColorSections: rgba(0, 0, 0, 0.4);
   --backgroundOpacity: 0.4;
-  --headingSize: 30px;
+  --headingSize: 25px;
   --gridSpace: 10px;
   --borderRadiusSection: 50px;
 }
@@ -88,31 +88,96 @@ header h2 {
   top: 15%;
 }
 
+.beers-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.beers-container {
+  display: flex;
+  width: 100%;
+  font-size: 15px;
+}
+
+.beer {
+  color: white;
+  margin: 10px;
+  width: 100%;
+  position: relative;
+}
+
+.beerName {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.beerStorage {
+  display: flex;
+  align-items: center;
+  /* background-color: rgb(156, 156, 156); */
+
+  width: 30%;
+  height: 20%;
+  border-radius: 100%;
+  position: absolute;
+  top: 0;
+  right: -20px;
+}
+
+.beerStorage h3 {
+  color: white;
+  width: 100%;
+  text-align: center;
+}
+
 /* ----------------------------------- */
 /* BARTENDERS------------------------------- */
 .Bartenders {
   grid-area: bartenders;
 }
+
+.bartenders-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  color: white;
+  margin: 20px auto;
+}
+
+.bartenders-container div {
+  width: 100%;
+}
+
+.bartenders-container svg {
+  height: 100%;
+}
 /* ----------------------------------- */
 /* SERVING------------------------------- */
 .Serving {
   grid-area: serving;
-  position: relative;
+  /* position: relative; */
+}
+
+.serving-container {
+  display: flex;
+  flex-direction: column;
+  height: 70%;
 }
 
 .alien-head {
-  width: 40%;
+  width: 80%;
   display: block;
-  margin: auto;
+  margin: 20px auto;
 }
 
 .servingOrders-container {
   display: flex;
-  position: absolute;
+  /* position: absolute; */
   bottom: 25px;
   color: white;
   width: 100%;
   height: 40px;
+  /* height: 20%; */
   align-items: center;
 }
 
@@ -122,6 +187,7 @@ header h2 {
   align-items: center;
   width: 33%;
   height: 100%;
+  margin: 10px;
 
   /* background-image: url("./images/svgs/planet.svg");
   background-position: center;
@@ -146,6 +212,13 @@ header h2 {
 .Queue {
   grid-area: queue;
 }
+
+.queue-container {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  width: 100%;
+}
 /* ----------------------------------- */
 
 /* EACH SECTION------------------------------- */
@@ -153,59 +226,8 @@ header h2 {
 .section-header {
   font-size: var(--headingSize);
   color: var(--textColor);
-}
-
-.bartenders-container {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  color: white;
-  margin: auto;
-}
-
-.bartenders-container div {
-  width: 100%;
-}
-
-.bartenders-container svg {
-  width: 100%;
-}
-
-.beers-container {
-  display: flex;
-  flex-direction: row;
-}
-
-.beers-container {
-  display: flex;
-  width: 100%;
-  font-size: 10px;
-}
-
-.beer {
-  color: white;
-  margin: 10px;
-  width: 100%;
-  position: relative;
-}
-
-.beerStorage {
-  display: flex;
-  align-items: center;
-  /* background-color: rgb(156, 156, 156); */
-
-  width: 30%;
-  height: 20%;
-  border-radius: 100%;
-  position: absolute;
-  top: 0;
-  right: -20px;
-}
-
-.beerStorage h3 {
-  color: white;
-  width: 100%;
-  text-align: center;
+  margin-top: 20px;
+  margin-left: 10px;
 }
 
 /* ORDERS */
@@ -224,7 +246,7 @@ svg {
 }
 svg#astronaut g#astronaut-right-palm,
 svg#astronaut g#astronaut-left-palm {
-  transition: all 3s;
+  transition: all 1s;
 }
 svg#astronaut g#astronaut-left-palm #money,
 svg#astronaut g#astronaut-left-palm #sign,
@@ -248,11 +270,13 @@ svg#astronaut.reserveTap g#astronaut-left-palm,
 svg#astronaut.pourBeer g#astronaut-left-palm,
 svg#astronaut.releaseTap g#astronaut-left-palm,
 svg#astronaut.startPayment g#astronaut-left-palm {
-  transform: rotate(0deg);
+  /* transform: rotate(0deg); */
+  animation: restArm 1s forwards;
 }
 svg#astronaut.receivePayment g#astronaut-right-palm,
 svg#astronaut.waiting g#astronaut-right-palm {
-  transform: rotate(0deg);
+  /* transform: rotate(0deg) 2s; */
+  animation: restArm 1s forwards;
 }
 
 /* Beer Serving*/
@@ -281,6 +305,10 @@ svg#astronaut.receivePayment g#astronaut-left-palm {
   transform: rotate(-150deg);
   animation: showReceivePayment 1s infinite alternate;
 }
+svg#astronaut.startPayment g#astronaut-left-palm {
+  transform: rotate(100deg);
+  animation: startPayment 1s infinite alternate;
+}
 
 svg#astronaut.startServing g#astronaut-left-palm #sign,
 svg#astronaut.startServing g#astronaut-left-palm #money,
@@ -291,6 +319,9 @@ svg#astronaut.reserveTap g#astronaut-right-palm #payment,
 svg#astronaut.pourBeer g#astronaut-left-palm #sign,
 svg#astronaut.pourBeer g#astronaut-left-palm #money,
 svg#astronaut.pourBeer g#astronaut-right-palm #payment,
+svg#astronaut.replaceKeg g#astronaut-left-palm #sign,
+svg#astronaut.replaceKeg g#astronaut-left-palm #money,
+svg#astronaut.replaceKeg g#astronaut-right-palm #payment,
 svg#astronaut.releaseTap g#astronaut-left-palm #sign,
 svg#astronaut.releaseTap g#astronaut-left-palm #money,
 svg#astronaut.releaseTap g#astronaut-right-palm #payment,
@@ -299,7 +330,10 @@ svg#astronaut.waiting g#astronaut-right-palm #payment,
 svg#astronaut.waiting g#astronaut-right-palm #beer,
 svg#astronaut.receivePayment g#astronaut-right-palm #beer,
 svg#astronaut.receivePayment g#astronaut-right-palm #payment,
-svg#astronaut.receivePayment g#astronaut-left-palm #sign {
+svg#astronaut.receivePayment g#astronaut-left-palm #sign,
+svg#astronaut.startPayment g#astronaut-right-palm #beer,
+svg#astronaut.startPayment g#astronaut-right-palm #money,
+svg#astronaut.startPayment g#astronaut-left-palm #sign {
   /* transform-origin: 90% 55%; */
   opacity: 0;
   /* display: none; */
@@ -337,5 +371,16 @@ svg#astronaut.receivePayment g#astronaut-left-palm {
 @keyframes showReceivePayment {
   to {
     transform: rotate(-100deg);
+  }
+}
+
+@keyframes startPayment {
+  to {
+    transform: rotate(90deg);
+  }
+}
+@keyframes restArm {
+  to {
+    transform: rotate(0deg);
   }
 }

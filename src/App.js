@@ -26,15 +26,13 @@ export default function App() {
   const [serving, setServing] = useState([]);
   const [queue, setQueue] = useState([]);
   const [bartenders, setBartenders] = useState([]);
-  // const [bar, setBar] = useState([]);
 
-  setInterval(fetching.fetchBar(setBeers, setStorage, setServing, setQueue, setBartenders), 5000);
-  // setInterval(fetching.fetchWholeBar(setBar), 5000);
+  // setInterval(() => fetching.fetchBar(setBeers, setStorage, setServing, setQueue, setBartenders), 5000);
 
-  // useEffect(() => {
-  //   //setBeers is the callback function of the getCards
-  //   fetching.fetchBar(setBeers, setStorage, setServing, setQueue, setBartenders);
-  // }, []);
+  useEffect(() => {
+    //setBeers is the callback function of the getCards
+    fetching.fetchBar(setBeers, setStorage, setServing, setQueue, setBartenders);
+  }, []);
 
   // useEffect(() => {
   //   //setBeers is the callback function of the getCards

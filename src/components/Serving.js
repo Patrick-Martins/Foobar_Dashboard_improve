@@ -8,11 +8,13 @@ export default function Serving(props) {
   return (
     <section className="Serving dashboard-section">
       <h2 className="section-header">Currently serving</h2>
-      <AlienHead className="alien-head" />
-      {/* <div className="serving-container">
+      <div className="serving-container">
+        <AlienHead className="alien-head" />
+        {/* <div className="serving-container">
         <img src={alienHead} alt="Alien Head" />
       </div> */}
-      <div className="servingOrders-container">{ordersServing}</div>
+        <div className="servingOrders-container">{ordersServing}</div>
+      </div>
     </section>
   );
 }
