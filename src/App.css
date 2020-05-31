@@ -2,6 +2,7 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  font-family: helvetica, sans-serif;
 }
 :root {
   --textColor: orange;
@@ -29,6 +30,8 @@ header {
 }
 .foobar {
   color: white;
+  width: 30px;
+  height: auto;
 }
 img {
   display: block;
@@ -244,10 +247,12 @@ svg {
   display: block;
   position: relative;
 }
-svg#astronaut g#astronaut-right-palm,
-svg#astronaut g#astronaut-left-palm {
-  transition: all 1s;
+svg#astronaut {
+  overflow: visible;
 }
+
+svg#astronaut g#astronaut-right-palm,
+svg#astronaut g#astronaut-left-palm,
 svg#astronaut g#astronaut-left-palm #money,
 svg#astronaut g#astronaut-left-palm #sign,
 svg#astronaut g#astronaut-right-palm #payment,
@@ -264,17 +269,9 @@ svg#astronaut g#astronaut-left-palm {
   transform-origin: 55% 55%;
 }
 
-/* rotate palm of arm to 0 depending on state*/
-svg#astronaut.startServing g#astronaut-left-palm,
-svg#astronaut.reserveTap g#astronaut-left-palm,
-svg#astronaut.pourBeer g#astronaut-left-palm,
-svg#astronaut.releaseTap g#astronaut-left-palm,
-svg#astronaut.startPayment g#astronaut-left-palm {
-  /* transform: rotate(0deg); */
-  animation: restArm 1s forwards;
-}
-svg#astronaut.receivePayment g#astronaut-right-palm,
-svg#astronaut.waiting g#astronaut-right-palm {
+/* waiting */
+svg#astronaut.waiting g#astronaut-right-palm,
+svg#astronaut.waiting g#astronaut-left-palm {
   /* transform: rotate(0deg) 2s; */
   animation: restArm 1s forwards;
 }
@@ -284,55 +281,57 @@ svg#astronaut.waiting g#astronaut-right-palm {
 svg#astronaut.startServing g#astronaut-right-palm,
 svg#astronaut.reserveTap g#astronaut-right-palm,
 svg#astronaut.pourBeer g#astronaut-right-palm,
+svg#astronaut.replaceKeg g#astronaut-right-palm,
 svg#astronaut.releaseTap g#astronaut-right-palm {
-  transform: rotate(160deg);
-  animation: drinkBeer 1s infinite alternate-reverse;
+  transform: rotate(140deg);
+  animation: drinkBeer 1s infinite alternate;
+}
+svg#astronaut.startServing g#astronaut-left-palm,
+svg#astronaut.reserveTap g#astronaut-left-palm,
+svg#astronaut.pourBeer g#astronaut-left-palm,
+svg#astronaut.replaceKeg g#astronaut-left-palm,
+svg#astronaut.releaseTap g#astronaut-left-palm {
+  transform: rotate(-90deg);
+  animation: showHelping 1s infinite alternate;
 }
 
 /* Payment Serving*/
 
-svg#astronaut g#astronaut-right-palm {
-  /* transform: rotate(160deg); */
-}
-/* LEFT PALM -------------------*/
 /* Waiting Serving*/
-svg#astronaut.waiting g#astronaut-left-palm {
+/* svg#astronaut.waiting g#astronaut-left-palm {
   transform: rotate(-180deg);
   animation: showWaiting 0.5s infinite alternate;
-}
+} */
+
 /* Receive Money Serving*/
-svg#astronaut.receivePayment g#astronaut-left-palm {
-  transform: rotate(-150deg);
-  animation: showReceivePayment 1s infinite alternate;
-}
+svg#astronaut.receivePayment g#astronaut-left-palm,
 svg#astronaut.startPayment g#astronaut-left-palm {
+  transform: rotate(-150deg);
+  animation: paymentLeft 1s infinite alternate;
+}
+svg#astronaut.receivePayment g#astronaut-right-palm,
+svg#astronaut.startPayment g#astronaut-right-palm {
   transform: rotate(100deg);
-  animation: startPayment 1s infinite alternate;
+  animation: paymentRight 0.5s infinite alternate;
 }
 
-svg#astronaut.startServing g#astronaut-left-palm #sign,
 svg#astronaut.startServing g#astronaut-left-palm #money,
 svg#astronaut.startServing g#astronaut-right-palm #payment,
-svg#astronaut.reserveTap g#astronaut-left-palm #sign,
 svg#astronaut.reserveTap g#astronaut-left-palm #money,
 svg#astronaut.reserveTap g#astronaut-right-palm #payment,
-svg#astronaut.pourBeer g#astronaut-left-palm #sign,
 svg#astronaut.pourBeer g#astronaut-left-palm #money,
 svg#astronaut.pourBeer g#astronaut-right-palm #payment,
-svg#astronaut.replaceKeg g#astronaut-left-palm #sign,
 svg#astronaut.replaceKeg g#astronaut-left-palm #money,
 svg#astronaut.replaceKeg g#astronaut-right-palm #payment,
-svg#astronaut.releaseTap g#astronaut-left-palm #sign,
 svg#astronaut.releaseTap g#astronaut-left-palm #money,
 svg#astronaut.releaseTap g#astronaut-right-palm #payment,
 svg#astronaut.waiting g#astronaut-left-palm #money,
 svg#astronaut.waiting g#astronaut-right-palm #payment,
 svg#astronaut.waiting g#astronaut-right-palm #beer,
+svg#astronaut.waiting g#astronaut-left-palm #sign,
 svg#astronaut.receivePayment g#astronaut-right-palm #beer,
-svg#astronaut.receivePayment g#astronaut-right-palm #payment,
 svg#astronaut.receivePayment g#astronaut-left-palm #sign,
 svg#astronaut.startPayment g#astronaut-right-palm #beer,
-svg#astronaut.startPayment g#astronaut-right-palm #money,
 svg#astronaut.startPayment g#astronaut-left-palm #sign {
   /* transform-origin: 90% 55%; */
   opacity: 0;
@@ -341,31 +340,26 @@ svg#astronaut.startPayment g#astronaut-left-palm #sign {
 }
 /* svg#astronaut.releaseTap g#astronaut-left-palm */
 
-svg#astronaut.waiting g#astronaut-left-palm {
-  /* transform-origin: 90% 55%; */
-  transform: rotate(-90deg);
-
-  /* transform: translateX(100px); */
-}
-
-svg#astronaut.waiting g#astronaut-right-palm #beer {
-}
-
-svg#astronaut.receivePayment g#astronaut-left-palm {
-  /* transform-origin: 90% 55%; */
-  /* transform: rotate(90deg); */
-}
-
 /* ANIMATION */
 
 @keyframes drinkBeer {
   to {
-    transform: rotate(180deg);
+    transform: rotate(170deg);
   }
 }
-@keyframes showWaiting {
+@keyframes showHelping {
   to {
     transform: rotate(-100deg);
+  }
+}
+@keyframes paymentLeft {
+  to {
+    transform: rotate(-100deg);
+  }
+}
+@keyframes paymentRight {
+  to {
+    transform: rotate(110deg);
   }
 }
 @keyframes showReceivePayment {
@@ -382,5 +376,109 @@ svg#astronaut.receivePayment g#astronaut-left-palm {
 @keyframes restArm {
   to {
     transform: rotate(0deg);
+  }
+}
+
+@media only screen and (max-width: 880px) {
+  :root {
+    /* --textColor: orange;
+    --bgColorSections: rgba(0, 0, 0, 0.4);
+    --backgroundOpacity: 0.4; */
+    --headingSize: 15px;
+    /* --gridSpace: 10px;*/
+    --borderRadiusSection: 20px;
+  }
+  header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 0;
+    flex-wrap: wrap;
+    flex-shrink: 0;
+  }
+
+  header > img,
+  header > h2.waitingTime {
+    margin: 10px;
+  }
+
+  .waitingTime {
+    font-size: 20px;
+  }
+
+  .Dashboard {
+    height: auto;
+    width: 100vw;
+    background-image: url("./images/milky-way.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .beers-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 0;
+    flex-wrap: wrap;
+    flex-shrink: 0;
+
+    /* margin-bottom: 0.5%; */
+  }
+  .beer {
+    width: 80px;
+  }
+  .beerName {
+    font-size: 13px;
+  }
+
+  /* Bartenders */
+  .bartenders-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 0;
+    flex-wrap: wrap;
+    flex-shrink: 0;
+  }
+  /* Queue */
+  svg#alien {
+    width: 30%;
+  }
+
+  /* Serving */
+  .serving-container {
+    height: 90%;
+    margin-top: auto;
+  }
+  .servingOrders-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 0;
+    flex-wrap: wrap;
+    flex-shrink: 0;
+    height: auto;
+  }
+  .serving-order {
+    display: flex;
+    position: relative;
+    align-items: center;
+    width: 70px;
+    height: 70px;
+    margin: 10px;
+  }
+
+  .container-infoSections {
+    height: 90%;
+    width: 100%;
+    display: grid;
+    padding: var(--gridSpace);
+    margin: auto;
+    grid-template-columns: 50% 25% 25%;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+      "beer beer beer"
+      "bartenders serving serving "
+      "queue queue queue";
   }
 }

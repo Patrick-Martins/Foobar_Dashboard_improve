@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
-import Logo from "./images/dxc43.png";
 import BeerKegs from "./components/BeerKegs";
 import Bartenders from "./components/Bartenders";
 import Queue from "./components/Queue";
 import Serving from "./components/Serving";
 //import function from the module I created
 import { fetching } from "./modules/database";
+import FoobarLogo from "./images/moonbar_logo_white.png";
 
 //GSAP
 import { gsap } from "gsap";
@@ -59,13 +59,23 @@ export default function App() {
   //GSAP
 
   // gsap.fromTo(`html body div#root div.Dashboard div.container-infoSections section.Bartenders.dashboard-section div.bartenders-container dannie.Dannie svg#astronaut.pourBeer g#astronaut-left-palm`, 5, { rotate: "0deg" }, { rotate: "180deg" });
+  let beersRemaining = 0;
+  queue.map((order) => {
+    //go through order array each beer
+    order.order.map(() => {
+      beersRemaining++;
+    });
+  });
+  console.log(beersRemaining);
+  const timeRemaining = Math.ceil((beersRemaining * 10) / 60);
 
   return (
     <div className="Dashboard">
       <header>
         {/* <img src={Logo} alt="" /> */}
-        <h1 className="foobar">Foobar</h1>
-        <h2>Wainting time 6 min...</h2>
+        <img src={FoobarLogo} alt="logo image" className="foobar" width="200" />
+        {/* <h1 className="foobar">Foobar</h1> */}
+        <h2 className="waitingTime">Waiting time {timeRemaining} min...</h2>
       </header>
       <div className="container-infoSections">
         <BeerKegs availableBeers={beers} onStorage={storage} />
