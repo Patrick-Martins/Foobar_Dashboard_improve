@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Storage from "./Storage";
-import { fetching } from "../modules/database";
 import { ReactComponent as BeerKeg } from "../images/svgs/keg.svg";
 import "../styling/beer.css";
 
-//All beers
+//All beers images sources
 import githop from "../images/beers/githop.png";
 import steampunk from "../images/beers/steampunk.png";
 import fairytaleale from "../images/beers/fairytaleale.png";
@@ -15,9 +14,6 @@ import sleighride from "../images/beers/sleighride.png";
 import elhefe from "../images/beers/elhefe.png";
 import hollaback from "../images/beers/hollaback.png";
 import mowintime from "../images/beers/mowintime.png";
-
-//import function from the module I created
-// import { fetching } from "./modules/database";
 
 export default function Beer(props) {
   const storageBeer = props.storage.map((beerStorage) => {
@@ -34,9 +30,8 @@ export default function Beer(props) {
 
   //   console.log(Object.values(props.storage));
 
-  //replace all spaces with empty
+  //replace all spaces with empty and set to lowercase
   beerName = beerName.replace(/ /g, "").toLowerCase();
-  // console.log(`${beerName}`);
 
   if (beerName === "githop") {
     imagePath = githop;
@@ -59,18 +54,12 @@ export default function Beer(props) {
   } else if (beerName === "mowintime") {
     imagePath = mowintime;
   }
-
-  // console.log("IMAGEPATH", imagePath);
-
   const beerImage = <img src={imagePath} alt="image keg" className="beerImage" />;
 
-  // console.log("LINK", imagesBeers);
-
-  // beerImagePATH = "../images/beers/" + beerImagePATH + ".png";
-
+  //CHECK LEVEL------------------
   let classLevel = "percent0";
   checkLevel();
-  //Check level
+
   function checkLevel() {
     const level = props.level;
     const total = 2500;
@@ -106,7 +95,6 @@ export default function Beer(props) {
         {beerImage}
       </div>
       <h3 className="beerName">{props.name}</h3>
-      {/* <h3 className="beerTap">LEVEL: {props.level}</h3> */}
       {storageBeer}
     </div>
   );

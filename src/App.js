@@ -10,16 +10,11 @@ import FoobarLogo from "./images/moonbar_logo_white.png";
 
 //GSAP
 import { gsap } from "gsap";
-import { TweenLite } from "gsap/all";
-import { TweenMax } from "gsap/all";
-import { Power1 } from "gsap/all";
-import { Bounce } from "gsap/all";
-import { Elastic } from "gsap/all";
 import { _createElement } from "gsap/CSSPlugin";
+import { MotionPathPlugin } from "gsap/MotionPathPlugin";
 
 export default function App() {
   //STATE----
-  //when i call setBeers it returns an array, with the beers
   //when I call set beers, whatever i put inside setBeers, is the value of {beers}
   const [beers, setBeers] = useState([]);
   const [storage, setStorage] = useState([]);
@@ -34,32 +29,109 @@ export default function App() {
     fetching.fetchBar(setBeers, setStorage, setServing, setQueue, setBartenders);
   }, []);
 
-  // useEffect(() => {
-  //   //setBeers is the callback function of the getCards
-  //   fetching.getTaps(setBeers);
-  // }, []);
-
-  // useEffect(() => {
-  //   //setStorage is the callback function of the getCards
-  //   fetching.getBeersStorage(setStorage);
-  // }, []);
-
-  // useEffect(() => {
-  //   //setStorage is the callback function of the getCards
-  //   fetching.getServing(setServing);
-  // }, []);
-
-  // useEffect(() => {
-  //   //setStorage is the callback function of the getCards
-  //   fetching.getQueue(setQueue);
-  // }, []);
-
   // fetching.getData();
 
   //GSAP
 
-  // gsap.fromTo(`html body div#root div.Dashboard div.container-infoSections section.Bartenders.dashboard-section div.bartenders-container dannie.Dannie svg#astronaut.pourBeer g#astronaut-left-palm`, 5, { rotate: "0deg" }, { rotate: "180deg" });
+  gsap.registerPlugin(MotionPathPlugin);
+  gsap.to(["#star1", "#star2", "#star3", "#beer1", "#beer2", "#beer3"], {
+    duration: 5,
+    repeat: -1,
+    repeatDelay: 0,
+    ease: "none",
+    motionPath: {
+      start: 0.16,
+      end: 1.16,
+      path: "#alien-circle",
+      align: "#alien-circle",
+      alignOrigin: [0.5, 0.5],
+    },
+  });
+  gsap.to("#star1", {
+    duration: 5,
+    repeat: -1,
+    repeatDelay: 0,
+    ease: "none",
+    motionPath: {
+      start: 0.16,
+      end: 1.16,
+      path: "#alien-circle",
+      align: "#alien-circle",
+      autoRotate: true,
+      alignOrigin: [0.5, 0.5],
+    },
+  });
+  gsap.to("#beer1", {
+    duration: 5,
+    repeat: -1,
+    repeatDelay: 0,
+    ease: "none",
+    motionPath: {
+      start: 0.32,
+      end: 1.32,
+      path: "#alien-circle",
+      align: "#alien-circle",
+      alignOrigin: [0.5, 0.5],
+    },
+  });
+  gsap.to("#star2", {
+    duration: 5,
+    repeat: -1,
+    repeatDelay: 0,
+    ease: "none",
+    motionPath: {
+      start: 0.48,
+      end: 1.48,
+      path: "#alien-circle",
+      align: "#alien-circle",
+      autoRotate: true,
+      alignOrigin: [0.5, 0.5],
+    },
+  });
+  gsap.to("#beer2", {
+    duration: 5,
+    repeat: -1,
+    repeatDelay: 0,
+    ease: "none",
+    motionPath: {
+      start: 0.64,
+      end: 1.64,
+      path: "#alien-circle",
+      align: "#alien-circle",
+      alignOrigin: [0.5, 0.5],
+    },
+  });
+  gsap.to("#star3", {
+    duration: 5,
+    repeat: -1,
+    repeatDelay: 0,
+    ease: "none",
+    motionPath: {
+      start: 0.8,
+      end: 1.8,
+      path: "#alien-circle",
+      align: "#alien-circle",
+      autoRotate: true,
+      alignOrigin: [0.5, 0.5],
+    },
+  });
+  gsap.to("#beer3", {
+    duration: 5,
+    repeat: -1,
+    repeatDelay: 0,
+    ease: "none",
+    motionPath: {
+      start: 0.96,
+      end: 1.96,
+      path: "#alien-circle",
+      align: "#alien-circle",
+      alignOrigin: [0.5, 0.5],
+    },
+  });
+
+  //CALCULATE TIME REMAINING
   let beersRemaining = 0;
+  //go through each beer in all the queue
   queue.map((order) => {
     //go through order array each beer
     order.order.map(() => {
@@ -72,9 +144,7 @@ export default function App() {
   return (
     <div className="Dashboard">
       <header>
-        {/* <img src={Logo} alt="" /> */}
         <img src={FoobarLogo} alt="logo image" className="foobar" width="200" />
-        {/* <h1 className="foobar">Foobar</h1> */}
         <h2 className="waitingTime">Waiting time {timeRemaining} min...</h2>
       </header>
       <div className="container-infoSections">

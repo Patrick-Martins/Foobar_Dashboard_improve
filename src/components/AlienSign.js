@@ -215,6 +215,7 @@ export default function AlienSign(props) {
         </text>
       </g>
     </svg>
+    // transform="matrix(1 0 0 1 32.4877 70.4901)"
   );
 }
 
