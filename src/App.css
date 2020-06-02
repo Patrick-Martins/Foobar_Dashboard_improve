@@ -305,6 +305,19 @@ svg#astronaut g#astronaut-left-palm {
   transform-origin: 55% 55%;
 }
 
+#Dannie svg#astronaut g#astronaut-left-palm,
+#Dannie svg#astronaut g#astronaut-right-palm {
+  animation-delay: 0.2s;
+}
+#Jonas svg#astronaut g#astronaut-left-palm,
+#Jonas svg#astronaut g#astronaut-right-palm {
+  animation-delay: 1s;
+}
+#Peter svg#astronaut g#astronaut-left-palm,
+#Peter svg#astronaut g#astronaut-right-palm {
+  animation-delay: 0.6s;
+}
+
 /* waiting */
 svg#astronaut.waiting g#astronaut-right-palm,
 svg#astronaut.waiting g#astronaut-left-palm {

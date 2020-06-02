@@ -9,8 +9,8 @@ export default function Bartenders(props) {
     const bartenderStatus = bartender.statusDetail;
     return (
       //each astronaut SVG will have a class that corresponds to the statusDetail value
-      <div className="astronaut-container">
-        <Astronaut class={bartenderStatus} />
+      <div className="astronaut-container" id={bartender.name}>
+        <Astronaut className={bartenderStatus} />
         {bartender.name === "Jonas" && <img src={Jonas} />}
         {bartender.name === "Peter" && <img src={Peter} />}
         {bartender.name === "Dannie" && <img src={Dannie} />}
