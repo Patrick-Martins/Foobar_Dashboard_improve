@@ -22,113 +22,113 @@ export default function App() {
   const [queue, setQueue] = useState([]);
   const [bartenders, setBartenders] = useState([]);
 
-  // setInterval(() => fetching.fetchBar(setBeers, setStorage, setServing, setQueue, setBartenders), 5000);
-
+  // useEffect(() => {
+  //   //setBeers is the callback function of the getCards
+  //   fetching.fetchBar(setBeers, setStorage, setServing, setQueue, setBartenders);
+  // }, []);
   useEffect(() => {
-    //setBeers is the callback function of the getCards
-    fetching.fetchBar(setBeers, setStorage, setServing, setQueue, setBartenders);
+    gsap.registerPlugin(MotionPathPlugin);
+    // gsap.to(["#star1", "#star2", "#star3", "#beer1", "#beer2", "#beer3"], {
+    //   duration: 5,
+    //   repeat: -1,
+    //   repeatDelay: 0,
+    //   ease: "none",
+    //   motionPath: {
+    //     start: 0.16,
+    //     end: 1.16,
+    //     path: "#alien-circle",
+    //     align: "#alien-circle",
+    //     alignOrigin: [0.5, 0.5],
+    //   },
+    // });
+    gsap.to("#star1", {
+      duration: 5,
+      repeat: -1,
+      repeatDelay: 0,
+      ease: "none",
+      motionPath: {
+        start: 0.16,
+        end: 1.16,
+        path: "#alien-circle",
+        align: "#alien-circle",
+        autoRotate: true,
+        alignOrigin: [0.5, 0.5],
+      },
+    });
+    gsap.to("#beer1", {
+      duration: 5,
+      repeat: -1,
+      repeatDelay: 0,
+      ease: "none",
+      motionPath: {
+        start: 0.32,
+        end: 1.32,
+        path: "#alien-circle",
+        align: "#alien-circle",
+        alignOrigin: [0.5, 0.5],
+      },
+    });
+    gsap.to("#star2", {
+      duration: 5,
+      repeat: -1,
+      repeatDelay: 0,
+      ease: "none",
+      motionPath: {
+        start: 0.48,
+        end: 1.48,
+        path: "#alien-circle",
+        align: "#alien-circle",
+        autoRotate: true,
+        alignOrigin: [0.5, 0.5],
+      },
+    });
+    gsap.to("#beer2", {
+      duration: 5,
+      repeat: -1,
+      repeatDelay: 0,
+      ease: "none",
+      motionPath: {
+        start: 0.64,
+        end: 1.64,
+        path: "#alien-circle",
+        align: "#alien-circle",
+        alignOrigin: [0.5, 0.5],
+      },
+    });
+    gsap.to("#star3", {
+      duration: 5,
+      repeat: -1,
+      repeatDelay: 0,
+      ease: "none",
+      motionPath: {
+        start: 0.8,
+        end: 1.8,
+        path: "#alien-circle",
+        align: "#alien-circle",
+        autoRotate: true,
+        alignOrigin: [0.5, 0.5],
+      },
+    });
+    gsap.to("#beer3", {
+      duration: 5,
+      repeat: -1,
+      repeatDelay: 0,
+      ease: "none",
+      motionPath: {
+        start: 0.96,
+        end: 1.96,
+        path: "#alien-circle",
+        align: "#alien-circle",
+        alignOrigin: [0.5, 0.5],
+      },
+    });
   }, []);
 
   // fetching.getData();
 
   //GSAP
 
-  gsap.registerPlugin(MotionPathPlugin);
-  gsap.to(["#star1", "#star2", "#star3", "#beer1", "#beer2", "#beer3"], {
-    duration: 5,
-    repeat: -1,
-    repeatDelay: 0,
-    ease: "none",
-    motionPath: {
-      start: 0.16,
-      end: 1.16,
-      path: "#alien-circle",
-      align: "#alien-circle",
-      alignOrigin: [0.5, 0.5],
-    },
-  });
-  gsap.to("#star1", {
-    duration: 5,
-    repeat: -1,
-    repeatDelay: 0,
-    ease: "none",
-    motionPath: {
-      start: 0.16,
-      end: 1.16,
-      path: "#alien-circle",
-      align: "#alien-circle",
-      autoRotate: true,
-      alignOrigin: [0.5, 0.5],
-    },
-  });
-  gsap.to("#beer1", {
-    duration: 5,
-    repeat: -1,
-    repeatDelay: 0,
-    ease: "none",
-    motionPath: {
-      start: 0.32,
-      end: 1.32,
-      path: "#alien-circle",
-      align: "#alien-circle",
-      alignOrigin: [0.5, 0.5],
-    },
-  });
-  gsap.to("#star2", {
-    duration: 5,
-    repeat: -1,
-    repeatDelay: 0,
-    ease: "none",
-    motionPath: {
-      start: 0.48,
-      end: 1.48,
-      path: "#alien-circle",
-      align: "#alien-circle",
-      autoRotate: true,
-      alignOrigin: [0.5, 0.5],
-    },
-  });
-  gsap.to("#beer2", {
-    duration: 5,
-    repeat: -1,
-    repeatDelay: 0,
-    ease: "none",
-    motionPath: {
-      start: 0.64,
-      end: 1.64,
-      path: "#alien-circle",
-      align: "#alien-circle",
-      alignOrigin: [0.5, 0.5],
-    },
-  });
-  gsap.to("#star3", {
-    duration: 5,
-    repeat: -1,
-    repeatDelay: 0,
-    ease: "none",
-    motionPath: {
-      start: 0.8,
-      end: 1.8,
-      path: "#alien-circle",
-      align: "#alien-circle",
-      autoRotate: true,
-      alignOrigin: [0.5, 0.5],
-    },
-  });
-  gsap.to("#beer3", {
-    duration: 5,
-    repeat: -1,
-    repeatDelay: 0,
-    ease: "none",
-    motionPath: {
-      start: 0.96,
-      end: 1.96,
-      path: "#alien-circle",
-      align: "#alien-circle",
-      alignOrigin: [0.5, 0.5],
-    },
-  });
-
+  setInterval(() => fetching.fetchBar(setBeers, setStorage, setServing, setQueue, setBartenders), 10000);
   //CALCULATE TIME REMAINING
   let beersRemaining = 0;
   //go through each beer in all the queue
