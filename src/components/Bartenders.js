@@ -14,7 +14,7 @@ export default function Bartenders(props) {
         {bartender.name === "Jonas" && <img src={Jonas} />}
         {bartender.name === "Peter" && <img src={Peter} />}
         {bartender.name === "Dannie" && <img src={Dannie} />}
-        <p>{bartenderStatus}</p>
+        <p className="bartenderName">{bartender.name}</p>
       </div>
     );
   });

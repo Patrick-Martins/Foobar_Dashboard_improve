@@ -160,6 +160,11 @@ header h2 {
   position: relative;
 }
 
+.bartenderName {
+  text-align: center;
+  margin-top: 5px;
+}
+
 .bartenders-container .astronaut-container > img {
   position: absolute;
   width: 23%;
