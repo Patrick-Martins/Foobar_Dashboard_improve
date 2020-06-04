@@ -5,15 +5,15 @@ import Dannie from "../images/bartenders/dannie.png";
 import { ReactComponent as Astronaut } from "../images/svgs/astronaut.svg";
 
 export default function Bartenders(props) {
-  const bartenders = props.bartenders.map((bartender) => {
+  const bartenders = props.bartenders.map((bartender, index) => {
     const bartenderStatus = bartender.statusDetail;
     return (
       //each astronaut SVG will have a class that corresponds to the statusDetail value
-      <div className="astronaut-container" id={bartender.name}>
+      <div key={bartender.name + index} className="astronaut-container" id={bartender.name}>
         <Astronaut className={bartenderStatus} />
-        {bartender.name === "Jonas" && <img src={Jonas} />}
-        {bartender.name === "Peter" && <img src={Peter} />}
-        {bartender.name === "Dannie" && <img src={Dannie} />}
+        {bartender.name === "Jonas" && <img src={Jonas} alt="Jonas image" />}
+        {bartender.name === "Peter" && <img src={Peter} alt="Peter image" />}
+        {bartender.name === "Dannie" && <img src={Dannie} alt="Dannie image" />}
         <p className="bartenderName">{bartender.name}</p>
       </div>
     );
@@ -21,12 +21,7 @@ export default function Bartenders(props) {
   return (
     <section className="Bartenders dashboard-section">
       <h2 className="section-header">Our bartenders</h2>
-      <div className="bartenders-container">
-        {/* <Jonas />
-        <Peter />
-        <Dannie /> */}
-        {bartenders}
-      </div>
+      <div className="bartenders-container">{bartenders}</div>
     </section>
   );
 }

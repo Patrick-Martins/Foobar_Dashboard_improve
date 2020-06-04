@@ -15,32 +15,18 @@ import { MotionPathPlugin } from "gsap/MotionPathPlugin";
 
 export default function App() {
   //STATE----
-  //when I call set beers, whatever i put inside setBeers, is the value of {beers}
+  //when I call set beers, whatever i put inside setBeers will be the new value of beers (state change)
   const [beers, setBeers] = useState([]);
   const [storage, setStorage] = useState([]);
   const [serving, setServing] = useState([]);
   const [queue, setQueue] = useState([]);
   const [bartenders, setBartenders] = useState([]);
 
-  // useEffect(() => {
-  //   //setBeers is the callback function of the getCards
-  //   fetching.fetchBar(setBeers, setStorage, setServing, setQueue, setBartenders);
-  // }, []);
+  setInterval(() => fetching.fetchBar(setBeers, setStorage, setServing, setQueue, setBartenders), 10000);
+
+  //GSAP
   useEffect(() => {
     gsap.registerPlugin(MotionPathPlugin);
-    // gsap.to(["#star1", "#star2", "#star3", "#beer1", "#beer2", "#beer3"], {
-    //   duration: 5,
-    //   repeat: -1,
-    //   repeatDelay: 0,
-    //   ease: "none",
-    //   motionPath: {
-    //     start: 0.16,
-    //     end: 1.16,
-    //     path: "#alien-circle",
-    //     align: "#alien-circle",
-    //     alignOrigin: [0.5, 0.5],
-    //   },
-    // });
     gsap.to("#star1", {
       duration: 5,
       repeat: -1,
@@ -124,21 +110,15 @@ export default function App() {
     });
   }, []);
 
-  // fetching.getData();
-
-  //GSAP
-
-  setInterval(() => fetching.fetchBar(setBeers, setStorage, setServing, setQueue, setBartenders), 10000);
   //CALCULATE TIME REMAINING
   let beersRemaining = 0;
   //go through each beer in all the queue
   queue.map((order) => {
-    //go through order array each beer
+    //go through order array in a beer
     order.order.map(() => {
       beersRemaining++;
     });
   });
-  console.log(beersRemaining);
   const timeRemaining = Math.ceil((beersRemaining * 10) / 60);
 
   return (

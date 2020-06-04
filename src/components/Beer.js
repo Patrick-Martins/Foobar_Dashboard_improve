@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Storage from "./Storage";
 import { ReactComponent as BeerKeg } from "../images/svgs/keg.svg";
 import "../styling/beer.css";
@@ -16,19 +16,14 @@ import hollaback from "../images/beers/hollaback.png";
 import mowintime from "../images/beers/mowintime.png";
 
 export default function Beer(props) {
-  const storageBeer = props.storage.map((beerStorage) => {
+  const storageBeer = props.storage.map((beerStorage, index) => {
     if (props.name === beerStorage.name) {
-      return <Storage storage={beerStorage.amount} />;
+      return <Storage key={beerStorage.name + index} storage={beerStorage.amount} />;
     }
   });
 
-  //   const [beerLeft, setLevel] = useState([]);
-
-  //   console.log(props.storage.amount);
   let beerName = props.name;
   let imagePath = "";
-
-  //   console.log(Object.values(props.storage));
 
   //replace all spaces with empty and set to lowercase
   beerName = beerName.replace(/ /g, "").toLowerCase();

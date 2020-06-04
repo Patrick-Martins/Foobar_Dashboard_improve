@@ -3,7 +3,7 @@ import Order from "./Order";
 import { ReactComponent as AlienHead } from "../images/svgs/head.svg";
 
 export default function Serving(props) {
-  const ordersServing = props.serving.map((order) => <Order id={order.id} />);
+  const ordersServing = props.serving.map((order, index) => <Order key={"order-" + index} id={order.id} />);
   return (
     <section className="Serving dashboard-section">
       <h2 className="section-header">Currently serving</h2>
