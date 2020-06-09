@@ -8,6 +8,8 @@ import Serving from "./components/Serving";
 import { fetching } from "./modules/database";
 import FoobarLogo from "./images/moonbar_logo_white.png";
 
+//IMPROVEMENT
+
 //GSAP
 import { gsap } from "gsap";
 import { _createElement } from "gsap/CSSPlugin";
