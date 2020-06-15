@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./App.css";
 import BeerKegs from "./components/BeerKegs";
 import Bartenders from "./components/Bartenders";
@@ -6,6 +6,7 @@ import Queue from "./components/Queue";
 import Serving from "./components/Serving";
 //import function from the module I created
 import { fetching } from "./modules/database";
+import { loadingAnim } from "./modules/loading";
 import FoobarLogo from "./images/moonbar_logo_white.png";
 
 //IMPROVEMENT
@@ -24,10 +25,33 @@ export default function App() {
   const [queue, setQueue] = useState([]);
   const [bartenders, setBartenders] = useState([]);
 
-  setInterval(() => fetching.fetchBar(setBeers, setStorage, setServing, setQueue, setBartenders), 10000);
+  function useInterval(callback, delay) {
+    const savedCallback = useRef();
+
+    // Remember the latest callback.
+    useEffect(() => {
+      savedCallback.current = callback;
+    }, [callback]);
+
+    // Set up the interval.
+    useEffect(() => {
+      function tick() {
+        savedCallback.current();
+      }
+      if (delay !== null) {
+        let id = setInterval(tick, delay);
+        return () => clearInterval(id);
+      }
+    }, [delay]);
+  }
+
+  // setInterval(() => fetching.fetchBar(setBeers, setStorage, setServing, setQueue, setBartenders), 10000);
+  useInterval(() => fetching.fetchBar(setBeers, setStorage, setServing, setQueue, setBartenders), 10000);
 
   //GSAP
   useEffect(() => {
+    loadingAnim.growCircles();
+
     gsap.registerPlugin(MotionPathPlugin);
     gsap.to("#star1", {
       duration: 5,
@@ -129,7 +153,17 @@ export default function App() {
         <img src={FoobarLogo} alt="logo image" className="foobar" width="200" />
         <h2 className="waitingTime">Waiting time {timeRemaining} min...</h2>
       </header>
-      <div className="container-infoSections">
+      {bartenders.length === 0 && (
+        <div className="loading">
+          <div className="circles-container">
+            <h2 id="load_Text">Loading...</h2>
+            <div id="loading-c1"></div>
+            <div id="loading-c2"></div>
+          </div>
+        </div>
+      )}
+
+      <div className={"container-infoSections " + (bartenders.length === 0 ? "hidden" : "show")}>
         <BeerKegs availableBeers={beers} onStorage={storage} />
         <Bartenders bartenders={bartenders} />
         <Serving serving={serving} />

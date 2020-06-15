@@ -88,3 +88,25 @@
 .yellowAlien .st7 {
   fill: yellowgreen;
 }
+
+/* ORDERS DISPLAY */
+
+#queueText {
+  opacity: 1;
+  /* transform: scale(1); */
+  animation: fadeIn 2s forwards;
+  transition: 1s;
+  display: block;
+  transform-origin: center;
+}
+
+@keyframes fadeIn {
+  50% {
+    font-size: 70px;
+    font-weight: bold;
+    fill: white;
+  }
+  100% {
+    /* transform: scale(1); */
+  }
+}

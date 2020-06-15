@@ -8,6 +8,7 @@ export function fetchBar(callbackBeers, callbackStorage, callbackServing, callba
       callbackServing(data.serving);
       callbackQueue(data.queue);
       callbackBartenders(data.bartenders);
+      console.log("FETCH");
     });
 }
 export function getTaps(callback) {

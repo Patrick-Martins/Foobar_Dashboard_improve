@@ -7,6 +7,7 @@ import "../styling/orders.css";
 // }
 
 export default function AlienSign(props) {
+  //class to alien based on queue number
   let alienClass;
   if (props.queue < 5) {
     alienClass = "greenAlien";
@@ -14,6 +15,14 @@ export default function AlienSign(props) {
     alienClass = "yellowAlien";
   } else if (props.queue > 8) {
     alienClass = "redAlien";
+  }
+
+  //number displayed
+  let numberDisplayed;
+  if (props.queue < 10) {
+    numberDisplayed = "0" + props.queue;
+  } else {
+    numberDisplayed = props.queue;
   }
   return (
     // style="enable-background:new 0 0 239 386.6;"
@@ -212,8 +221,9 @@ export default function AlienSign(props) {
           />
           <circle id="alien-sign-circle" className="st9" cx="58.4" cy="58.4" r="58.4" />
         </g>
-        <text transform="matrix(1 0 0 1 32.4877 70.4901)" id="queueText" className="st10 st11">
-          {props.queue}
+        {/* add a key value so that when props changes it does the animation (creates new element) */}
+        <text key={props.queue} transform="matrix(1 0 0 1 32.4877 70.4901)" id="queueText" className="st10 st11">
+          {numberDisplayed}
         </text>
       </g>
     </svg>
